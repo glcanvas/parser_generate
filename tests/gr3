@@ -1,0 +1,11 @@
+
+start = d;
+
+d < var tp:String;  var res:String;> ! {tp=""; res="";} : t { $1.tp = $0.tp; } l {res = $1.res};
+t < var tp:String;  var res:String;> ! {tp=""; res="";} : INT {tp = $0.second;} | REAL {tp = $0.second;} ;
+l < var tp:String;  var res:String;> ! {tp=""; res="";} : VAR {res = tp + " " + $0.second;};
+
+INT = "int";
+REAL = "real";
+VAR = "[a-z]+";
+WS => "[ \t\r\n]+";

@@ -1,0 +1,5 @@
+a <var res:String;> !{res="";} : b C {res = $0.res + " ! " + $1.second;};
+b <var res:String;> !{res="";} : D {res = $0.second;} | EPS {res = " EPS";};
+
+D = "d";
+C = "c";

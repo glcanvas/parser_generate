@@ -1,0 +1,12 @@
+class %s(inputString: List<Pair<String, String>>): Term(inputString) {
+    %s
+     var point = %sGenParser.point
+    init {
+        %s
+        this.FIRST = listOf(%s)
+        this.FOLLOW = listOf(%s)
+    }
+    override fun parseState() {
+        %s
+    }
+}

@@ -1,0 +1,29 @@
+package generatedCode
+
+import java.lang.Exception
+
+class %sGenParser(val inputString: List<Pair<String, String>>) {
+     //val startTerm: Term
+     val point = 0
+     val start : %s
+
+     init {
+
+            start = %s(inputString)
+            start.parseState()
+        }
+    %s
+
+    companion object {
+            var point = 0
+            var end = false
+    }
+}
+
+
+open class Term(val inputString: List<Pair<String, String>>) {
+    open fun parseState(): Unit {}
+    open var FIRST = listOf<String>()
+    open var FOLLOW = listOf<String>()
+    open var context = ArrayList<Any>()
+}

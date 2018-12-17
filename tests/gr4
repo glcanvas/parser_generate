@@ -1,0 +1,32 @@
+start = e;
+
+e <var res:Int;>!{res=0;}: t x {res = $0.res + $1.res + $1.next;};
+
+x <var res:Int; var next: Int;>
+    !   {res=0; next=0;}
+    :   PLUS t x {res = $1.res; next = $2.res + $2.next;}
+    |   MINUS t x {res = - $1.res; next = $2.res + $2.next;}
+    |   EPS {}
+    ;
+
+t <var res:Int> ! {res=1;} : f y {res = $0.res * $1.res;};
+
+
+y <var res:Int; var next: Int;>
+    !   {res=1; next=1;}
+    :   MULL f y {res = $1.res; next = $2.res * $2.next;}
+    |   EPS {};
+
+
+
+f <var res:Int>!{res=1;}: MINUS f {res = - $1.res; }| NUMBER {res = $0.second.toInt(10);} | OPEN e CLOSE {res = $1.res;};
+
+
+
+PLUS = "[+]";
+MINUS = "[-]";
+MULL = "[*]";
+OPEN = "[(]";
+CLOSE = "[)]";
+NUMBER = "[0-9]+";
+WS => "[ \t\r\n]+";
