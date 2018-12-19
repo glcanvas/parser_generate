@@ -4,6 +4,7 @@ import AntlrParser.*
 import java.io.File
 import java.lang.StringBuilder
 import java.util.stream.Collectors
+import kotlin.math.pow
 
 class CustomParser(val prefix: String, head: parseInputParser.Combine_allContext) {
     open val nonTerminals = ArrayList<Node>()
@@ -18,7 +19,6 @@ class CustomParser(val prefix: String, head: parseInputParser.Combine_allContext
     //val parserPac: String
 
     init {
-
         startNonTerm = head.begin().NOT_TERMINAL_ID().text
         //parserPac = head.pack().PACAGE_NAME().text
 

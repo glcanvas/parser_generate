@@ -1,6 +1,7 @@
 package generatedCode
 
 import java.lang.Exception
+import kotlin.math.pow
 
 class %sGenParser(val inputString: List<Pair<String, String>>) {
      //val startTerm: Term

@@ -1,14 +1,14 @@
 package generatedCode
 
-class gr3_GenLexer(val inputString: String) {
+class gr5_GenLexer(val inputString: String) {
     /*
     * first -- terminal name
     * second -- regexp for him
     * */
     private val tokens: List<Pair<String, String>> =
-        listOf(Pair("PLUS","[+]"),Pair("MINUS","[-]"),Pair("MULL","[*]"),Pair("OPEN","[(]"),Pair("CLOSE","[)]"),Pair("NUMBER","[0-9]+"),Pair("WS","[ \t\r\n]+"))// here input code
+        listOf(Pair("PLUS","[+]"),Pair("MINUS","[-]"),Pair("POW","[*]{2}"),Pair("MULL","[*]"),Pair("OPEN","[(]"),Pair("CLOSE","[)]"),Pair("NUMBER","[0-9]+"),Pair("WS","[ \t\r\n]+"))// here input code
     private val regexped = ArrayList<Regex>()
-    private val skip: List<Boolean> = listOf(false,false,false,false,false,false,true)// here input gen code
+    private val skip: List<Boolean> = listOf(false,false,false,false,false,false,false,true)// here input gen code
     private var point = 0
     /*
     * first --  name of terminal

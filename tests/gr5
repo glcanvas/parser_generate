@@ -1,0 +1,41 @@
+start = e;
+
+e <var res:Float;> ! {res=0.0f;}: t x {res = $0.res + $1.res + $1.next;};
+
+x <var res:Float; var next: Float;>
+    !   {res=0.0f; next=0.0f;}
+    :   PLUS t x {res = $1.res; next = $2.res + $2.next;}
+    |   MINUS t x {res = - $1.res; next = $2.res + $2.next;}
+    |   EPS {}
+    ;
+
+t <var res:Float> ! {res=1.0f;} : p y {res = $0.res * $1.res * $1.next;};
+
+
+y <var res:Float; var next: Float;>
+    !   {res=1.0f; next=1.0f;}
+    :   MULL p y {res = $1.res; next = $2.res * $2.next;}
+    |   EPS {};
+
+
+p <var res:Float> ! {res=1.0f;} : f pow {res = $0.res.pow($1.res.pow($1.next));};
+
+pow <var res:Float; var next: Float;>
+    ! {res=1.0f;next=1.0f;}
+    : POW f pow {res = $1.res; next = $2.res.pow( $2.next);}
+    | EPS {}
+    ;
+
+
+f <var res:Float>!{res=1.0f;}: MINUS f {res = - $1.res; }| NUMBER {res = $0.second.toFloat();} | OPEN e CLOSE {res = $1.res;};
+
+
+
+PLUS = "[+]";
+MINUS = "[-]";
+POW = "[*]{2}";
+MULL = "[*]";
+OPEN = "[(]";
+CLOSE = "[)]";
+NUMBER = "[0-9]+";
+WS => "[ \t\r\n]+";

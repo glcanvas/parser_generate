@@ -36,5 +36,6 @@ public class MainGenerate {
 
         l.generateCodeForLexer();
         p.generateParser();
+        p.printAll();
     }
 }

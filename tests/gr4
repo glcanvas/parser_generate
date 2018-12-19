@@ -18,7 +18,6 @@ y <var res:Int; var next: Int;>
     |   EPS {};
 
 
-
 f <var res:Int>!{res=1;}: MINUS f {res = - $1.res; }| NUMBER {res = $0.second.toInt(10);} | OPEN e CLOSE {res = $1.res;};
 
 
